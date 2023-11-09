@@ -1,0 +1,106 @@
+.StudyTracker {
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+h1 {
+  font-family: sans-serif; /* Setting sans-serif font family */
+  color: #8971d0;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.column-chart {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 300px;
+  margin-top: 150px;
+}
+
+body {
+  margin: 0;
+  margin-left: 150px;
+  margin-right: 150px;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #fdffab;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80px;
+  border: 2px solid #ccc; /* Add border for the form */
+  padding: 20px; /* Add padding inside the form */
+  border-radius: 10px;
+  margin-left: 650px;
+  margin-right: 650px;
+  font-size: 15px;
+}
+
+/* Add space between label and input */
+.form label {
+  margin-bottom: 10px;
+}
+
+.bar {
+  width: 50px;
+  /* background-color: steelblue; */
+  margin: 0 10px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* .bar {
+    width: 50px;
+    margin: 0 5px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 200px; /* Set maximum height for columns */
+/* position: relative; Added position relative */
+/* } */
+
+.subject-label {
+  margin-top: 5px;
+  margin-left: 5px;
+  position: absolute;
+  bottom: 150px;
+  font-size: 20px; /* Adjust the label position */
+}
+
+/* Colors for columns */
+.first-color {
+  background: #a8e6cf;
+}
+
+.second-color {
+  background: #ffd3b6;
+}
+
+.third-color {
+  background: #ffaaa5;
+}
+
+.fourth-color {
+  background: #7dace4;
+}
+
+.fifth-color {
+  background: #8971d0;
+}

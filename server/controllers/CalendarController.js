@@ -3,10 +3,10 @@ const models = require('../models/calendarModel');
 const calendarController = {};
 
 calendarController.getEvent = async (req, res) => {
-  const { id } = req.params;
+  const { day } = req.params;
 
   try {
-    const event = await models.CalendarEvent.findById(id);
+    const event = await models.Calendar.findOne({ day });
 
     if (!event) {
       return res.status(404).json({ error: 'Event not found' });

@@ -66,6 +66,9 @@ const FrontPage = ({ username }) => {
           <Link to="/chatroom" className="gridItem">
             <button>CHAT ROOM</button>
           </Link>
+          <Link to="/studytracker" className="gridItem">
+            <button>STUDY TRACKER</button>
+          </Link>
         </div>
       </section>
       <FooterMenu />

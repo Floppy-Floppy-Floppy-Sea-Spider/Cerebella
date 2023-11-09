@@ -13,6 +13,8 @@ const Schema = mongoose.Schema;
 const chatroomSchema = new Schema({
   name: String,
   content: String,
+  date: Date,
+  timestamp: { type: Date, default: Date.now },
 });
 
 const Chatroom = mongoose.model('Chatroom', chatroomSchema);
