@@ -24,6 +24,9 @@ const FrontPage = ({ username }) => {
           <Link to="/calendar" className="gridItem">
             <button>STUDY CALENDAR</button>
           </Link>
+          <Link to="/chatroom" className="gridItem">
+            <button>CHAT ROOM</button>
+          </Link>
         </div>
       </section>
       <FooterMenu />

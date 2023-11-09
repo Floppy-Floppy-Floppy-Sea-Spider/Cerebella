@@ -31,15 +31,14 @@
 
 // export default App;
 
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-import LoginPage from "./components/LoginPage.jsx";
-import SignupPage from "./components/SignupPage.jsx";
-import FrontPage from "./components/FrontPage.jsx";
-import Calendar from "./components/Calendar.jsx";
-import Chatroom from "./components/Chatroom.jsx";
+import LoginPage from './components/LoginPage.jsx';
+import SignupPage from './components/SignupPage.jsx';
+import FrontPage from './components/FrontPage.jsx';
+import Calendar from './components/Calendar.jsx';
+import Chatroom from './components/Chatroom.jsx';
 // import CreateSession from "./CreateSession.jsx";
 // import StudySession from "./StudySession.jsx";
 // import InputPage from "./InputPage.jsx";
