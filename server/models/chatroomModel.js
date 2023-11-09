@@ -11,8 +11,8 @@ mongoose
 const Schema = mongoose.Schema;
 
 const chatroomSchema = new Schema({
-    name: String,
-    content: String,
+  name: String,
+  content: String,
 });
 
 const Chatroom = mongoose.model('Chatroom', chatroomSchema);

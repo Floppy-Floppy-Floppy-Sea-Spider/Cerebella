@@ -1,21 +1,21 @@
 const express = require('express');
-const calendarController = require('../controllers/CalendarController');
-const chatroomController = require('../controllers/ChatroomController');
+const calendarController = require('../controllers/calendarController');
+const chatroomController = require('../controllers/chatroomController');
+const userController = require('../controllers/UserController');
 const router = express.Router();
 
+// router.get('/', (req, res) => {
+//   res.send('Hello from API');
+// });
 
-router.get('/', (req, res) => {
-    res.send('Hello from API')
-})
+router.get('/chatroom', chatroomController.getMessages);
 
-// router.get('/calendar', calendarController.getdate);
+router.post('/chatroom', chatroomController.createMessage);
 
-// router.post('/pets', petController.addPet);
+router.get('/calendar/:id', calendarController.getEvent);
 
-// router.delete('/pets/:id', petController.deletePet);
+router.post('/calendar', calendarController.createEvent);
 
-// router.patch('/pets/:id', petController.updatePet); 
-
-router.post('/login', userController.login);
+// router.post('/login', userController.login);
 
 module.exports = router;
