@@ -5,10 +5,10 @@ function HeaderMenu({username}) {
   return (
     <nav className="headerMenu">
       <h1 className="cerebella">Cerebella</h1>
-      <ul>
+      {/* <ul>
         <li className="username">WELCOME{username}</li>
         <li><Link to="/">LOGOUT</Link></li>
-      </ul>
+      </ul> */}
     </nav>
   )
 }

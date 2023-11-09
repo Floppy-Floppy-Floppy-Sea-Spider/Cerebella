@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import '../public/calendar.css';
+import "../public/calendar.css"
+import bloop from "../public/soundfx/bloop.mp3"
 
 const Calendar = () => {
   const [selectedDay, setSelectedDay] = useState(null);
   const [dayContent, setDayContent] = useState(null);
+
+  function chooseDaySound(){
+    new Audio(bloop).play();
+  }
 
   useEffect(() => {
     const fetchDayContent = async () => {
@@ -29,6 +34,7 @@ const Calendar = () => {
   }, [selectedDay]);
 
   const handleSquareClick = async (day) => {
+    chooseDaySound();
     setSelectedDay(day);
   };
 
@@ -78,23 +84,6 @@ const Calendar = () => {
       </div>
     </div>
   );
-
-  // return (
-  //   <div className="calendar">
-  //     {renderCard()}
-  //     <div className="days">
-  //       {[...Array(30).keys()].map((day) => (
-  //         <div
-  //           key={day + 1}
-  //           className="day-square"
-  //           onClick={() => handleSquareClick(day + 1)}
-  //         >
-  //           {day + 1}
-  //         </div>
-  //       ))}
-  //     </div>
-  //   </div>
-  // );
 };
 
 export default Calendar;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "/Users/Mai/Desktop/React copy/Cerebella/client/public/studyTracker.css";
+import "../public/studytracker.css"
 
 const ColumnChart = ({ data }) => {
   const subjects = ["Math", "Science", "Music", "History", "Biology"];
