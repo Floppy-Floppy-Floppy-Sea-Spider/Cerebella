@@ -1,76 +1,62 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
-const userController = require('./Database/UserController.js')
-const sessionController = require('./Database/SessionController.js')
-
-const mongoose = require('mongoose');
-
-const atlasUri = 'mongodb+srv://lfv2bcerebro:IQBO5fsrsenrmg9A@cluster0.rfcpwqu.mongodb.net/?retryWrites=true&w=majority'
-
-mongoose.connect(atlasUri)
-  .then(() => {
-  console.log('Connected to the database!');
-  }) .catch (err => {
-    console.error('MongoDB connection error:', err);
-  });
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, "MongoDB connection error:"));
-db.once('open', function() {
-  console.log('Connected to the database');
-});
-
-const APIrequests = require('./OpenAI/APIrequests');
+const router = require('./routes/api');
+const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
-//body parsers
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
-app.use(express.static(path.join(__dirname, '../dist')));
-app.use(express.static(path.join(__dirname, '../public')));
-app.use(express.static(path.join(__dirname, '../src/images')));
+//PARSING REQUEST
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  //console.log testing:
-  console.log('Received request from root')
+app.use(express.static(path.join(__dirname, '../client/public')));
 
-  res.status(200).sendFile(path.join(__dirname, '../public/index.html'))
-  //console.log testing:
-  console.log('Response sent back to root')
-})
-
-app.use('/api', APIrequests);
-
-app.use('/user', userController);
-
-app.use('/session', sessionController);
-
-app.use((err, req, res, next) => {
-  console.error('Error:', err.message);
-  console.error('Stack:', err.stack);
-  console.error('Path:', req.path);
-  console.error('Method:', req.method);
-  //console.log testing:
-  if(res.headersSent) {
-    return next(err);
-  }
-
-  res.status(err.statusCode || 500).json({
-    success: false,
-    message: 'Internal Server Error',
-    error: {
-      message: err.message,
-      stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
-    },
-  });
+// Route handler to respond with main app
+app.get('/*', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../client/public/index.html'));
 });
+
+app.use('/', router);
+
+// CATCH-ALL ROUTE HANDLER
+app.use('*', (req, res) => res.sendStatus(404));
+
+// GLOBAL ERROR HANDLER
+app.use((err, req, res, next) => {
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: { err: 'An error occurred' },
+  };
+  const errorObj = Object.assign(defaultErr, err);
+  console.log(errorObj.log);
+
+  return res.status(errorObj.status).send(errorObj.message);
+});
+
+// app.use((err, req, res, next) => {
+//   console.error('Error:', err.message);
+//   console.error('Stack:', err.stack);
+//   console.error('Path:', req.path);
+//   console.error('Method:', req.method);
+//   //console.log testing:
+//   if(res.headersSent) {
+//     return next(err);
+//   }
+
+//   res.status(err.statusCode || 500).json({
+//     success: false,
+//     message: 'Internal Server Error',
+//     error: {
+//       message: err.message,
+//       stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
+//     },
+//   });
+// });
 
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });
-
-module.exports = app;
