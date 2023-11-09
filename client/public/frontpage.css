@@ -16,7 +16,7 @@ html, body {
 
   .mainMenu {
     font-family: "Oswald", sans-serif;
-    color: #FF6600;
+    color: #1a2a6c;
     margin: 20px;
     font-weight: bold;
     height: 100%;
@@ -82,8 +82,6 @@ html, body {
     position: relative;
     z-index: 0;
     cursor: pointer;
-  
-    /* Apply animation to the buttons themselves */
     position: relative;
     overflow: hidden;
   }
