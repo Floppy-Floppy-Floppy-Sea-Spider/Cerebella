@@ -59,14 +59,23 @@ const Calendar = () => {
   };
 
   return (
-    <div className='calendar'>
-      <h1 className='calTitle'>Study Calendar</h1>
+    <div className="calendar">
+      <h1 className="calTitle">Study Calendar</h1>
       {renderCard()}
-      <div className="days">
+      <div className="calendar-grid">
+        <div className="day-header">Sun</div>
+        <div className="day-header">Mon</div>
+        <div className="day-header">Tue</div>
+        <div className="day-header">Wed</div>
+        <div className="day-header">Thu</div>
+        <div className="day-header">Fri</div>
+        <div className="day-header">Sat</div>
         {[...Array(30).keys()].map((day) => (
           <div
             key={day + 1}
-            className="day-square"
+            className={`day-square ${
+              day + 1 === selectedDay ? 'selected' : ''
+            }`}
             onClick={() => handleSquareClick(day + 1)}
           >
             {day + 1}
