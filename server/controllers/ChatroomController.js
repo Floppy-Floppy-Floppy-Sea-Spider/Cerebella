@@ -22,7 +22,11 @@ chatroomController.createMessage = async (req, res) => {
   }
 
   try {
-    const newMessage = await models.Chatroom.create({ name, content });
+    const newMessage = await models.Chatroom.create({
+      name,
+      content,
+      timestamp: new Date().toLocaleString(),
+    });
     res.status(201).json(newMessage);
   } catch (error) {
     console.error('Error creating message:', error);

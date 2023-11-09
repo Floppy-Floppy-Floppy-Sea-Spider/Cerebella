@@ -25,29 +25,31 @@ const Chatroom = () => {
   const sendMessage = async (e) => {
     e.preventDefault();
     if (name && content) {
-      const newMessage = {
-        name,
-        content,
-      };
-      try {
-        const response = await fetch('http://localhost:3000/chatroom', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newMessage),
-        });
+    const newMessage = {
+      name,
+      content,
+      timestamp: new Date().toLocaleString(),
+    };
+    try {
+      const response = await fetch('http://localhost:3000/chatroom', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newMessage),
+      });
 
-        if (response.ok) {
-          setMessages((prevMessages) => [...prevMessages, newMessage]);
-          setContent('');
-        } else {
-          console.error('Failed to send message');
-        }
-      } catch (error) {
-        console.error('Error sending message:', error);
+      if (response.ok) {
+        const createdMessage = await response.json();
+        setMessages((prevMessages) => [...prevMessages, createdMessage]);
+        setContent('');
+      } else {
+        console.error('Failed to send message');
       }
+    } catch (error) {
+      console.error('Error sending message:', error);
     }
+  }
   };
 
   const editMessage = async (id, newContent) => {
@@ -93,50 +95,46 @@ const Chatroom = () => {
   };
 
   return (
-    <section>
-      <h1 className="chatTitle">Student Chatroom</h1>
-      <div className="chat-container">
-        <div className="chat-form">
-          <form onSubmit={sendMessage}>
-            <input
-              type="text"
-              placeholder="Your Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <textarea
-              type="text"
-              placeholder="Type a message"
-              rows={5}
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-            />
-            <button className="sendMessageBtn" type="submit">
-              Send
-            </button>
-          </form>
-        </div>
-        <div className="chat-display">
-          {messages.map((msg, index) => (
-            <div key={index} className="message">
-              <strong>{msg.name}: </strong>
-              {msg.content}
-              <div className="message-actions">
-                <button
-                  onClick={() =>
-                    editMessage(msg._id, prompt('Edit message:', msg.content))
-                  }
-                >
-                  Edit
-                </button>
-                <button onClick={() => deleteMessage(msg._id)}>Delete</button>
-              </div>
-            </div>
-          ))}
-        </div>
+    <div className="chat-container">
+      <div className="chat-form">
+        <form onSubmit={sendMessage}>
+          <input
+            type="text"
+            placeholder="Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Type a message"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <button type="submit">Send</button>
+        </form>
       </div>
-    </section>
+      <div className="chat-display">
+        {messages.map((msg, index) => (
+          <div key={index} className="message">
+            <strong>{msg.name}: </strong>
+            {msg.content}
+            <div className="message-actions">
+              <button
+                onClick={() =>
+                  editMessage(msg._id, prompt('Edit message:', msg.content))
+                }
+              >
+                Edit
+              </button>
+              <button onClick={() => deleteMessage(msg._id)}>Delete</button>
+              <span className="timestamp">{msg.timestamp}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
 export default Chatroom;
+
