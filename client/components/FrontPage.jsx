@@ -32,6 +32,9 @@ const FrontPage = ({ username }) => {
           <Link to="/calendar" className="gridItem">
             <button>STUDY CALENDAR</button>
           </Link>
+          <Link to="/studytracker" className="gridItem">
+            <button>STUDY TRACKER</button>
+          </Link>
         </div>
       </section>
       <FooterMenu />

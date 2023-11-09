@@ -22,11 +22,49 @@ chatroomController.createMessage = async (req, res) => {
   }
 
   try {
-    const newMessage = await models.Chatroom.create({ name, content });
+    const newMessage = await models.Chatroom.create({
+      name,
+      content,
+      timestamp: new Date().toLocaleString(),
+    });
     res.status(201).json(newMessage);
   } catch (error) {
     console.error('Error creating message:', error);
     res.status(500).json({ error: 'Error creating message' });
+  }
+};
+
+chatroomController.editMessage = async (req, res) => {
+  const { id } = req.params;
+  const { content } = req.body;
+
+  try {
+    const updatedMessage = await models.Chatroom.findByIdAndUpdate(
+      id,
+      { content },
+      { new: true }
+    );
+
+    if (!updatedMessage) {
+      return res.status(404).json({ error: 'Message not found' });
+    }
+
+    res.status(200).json(updatedMessage);
+  } catch (error) {
+    console.error('Error editing message:', error);
+    res.status(500).json({ error: 'Error editing message' });
+  }
+};
+
+chatroomController.deleteMessage = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deletedMessage = await models.Chatroom.findByIdAndDelete(id);
+    res.status(200).json(deletedMessage);
+  } catch (error) {
+    console.error('Error deleting message:', error);
+    res.status(500).json({ error: 'Error deleting message' });
   }
 };
 
