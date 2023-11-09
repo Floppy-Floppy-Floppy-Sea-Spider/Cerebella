@@ -50,6 +50,48 @@ const Chatroom = () => {
     }
   };
 
+  const editMessage = async (id, newContent) => {
+    try {
+      const response = await fetch(`http://localhost:3000/chatroom/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content: newContent }),
+      });
+
+      if (response.ok) {
+        setMessages((prevMessages) =>
+          prevMessages.map((msg) =>
+            msg._id === id ? { ...msg, content: newContent } : msg
+          )
+        );
+      } else {
+        console.error('Failed to edit message');
+      }
+    } catch (error) {
+      console.error('Error editing message:', error);
+    }
+  };
+
+  const deleteMessage = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/chatroom/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        setMessages((prevMessages) =>
+          prevMessages.filter((msg) => msg._id !== id)
+        );
+      } else {
+        console.error('Failed to delete message');
+      }
+    } catch (error) {
+      console.error('Error deleting message:', error);
+    }
+  };
+
   return (
     <section>
       <h1 className="chatTitle">Student Chatroom</h1>
@@ -79,6 +121,16 @@ const Chatroom = () => {
             <div key={index} className="message">
               <strong>{msg.name}: </strong>
               {msg.content}
+              <div className="message-actions">
+                <button
+                  onClick={() =>
+                    editMessage(msg._id, prompt('Edit message:', msg.content))
+                  }
+                >
+                  Edit
+                </button>
+                <button onClick={() => deleteMessage(msg._id)}>Delete</button>
+              </div>
             </div>
           ))}
         </div>
