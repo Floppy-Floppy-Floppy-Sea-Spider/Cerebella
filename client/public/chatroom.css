@@ -61,14 +61,14 @@
   padding: 10px;
   background-color: #fd5959;
   border-radius: 5px;
-  color: white;
+  color: black;
   font-weight: bold;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease-in-out;
 }
 
 .message:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .message:nth-child(2n) {

@@ -15,17 +15,12 @@ const FrontPage = ({ username }) => {
           <Link to="/createsession" className="gridItem">
             <button>CREATE STUDY SESSION</button>
           </Link>
-          <Link to="/reviewstudysession" className="gridItem">
-            <button>REVIEW STUDY SESSIONS</button>
-          </Link>
+
           <Link to="/chatroom" className="gridItem">
             <button>STUDENT CHATROOM</button>
           </Link>
           <Link to="/calendar" className="gridItem">
             <button>STUDY CALENDAR</button>
-          </Link>
-          <Link to="/chatroom" className="gridItem">
-            <button>CHAT ROOM</button>
           </Link>
         </div>
       </section>
