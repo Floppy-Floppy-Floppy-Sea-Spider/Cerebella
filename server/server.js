@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../client/public')));
 
 // Route handler to respond with main app
-app.get('/*', (req, res) => {
+app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 

@@ -11,6 +11,7 @@ mongoose
 const Schema = mongoose.Schema;
 
 const calendarSchema = new Schema({
+  day: Number,
   content: String,
 });
 
