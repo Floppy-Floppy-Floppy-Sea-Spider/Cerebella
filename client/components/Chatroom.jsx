@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '/Users/Mai/Desktop/React copy/Cerebella/client/public/chatroom.css';
+import '/Users/yvonneqtram/Cerebella/client/public/chatroom.css';
 
 const Chatroom = () => {
   const [messages, setMessages] = useState([]);
@@ -39,7 +39,7 @@ const Chatroom = () => {
         });
 
         if (response.ok) {
-          setMessages(prevMessages => [...prevMessages, newMessage]);
+          setMessages((prevMessages) => [...prevMessages, newMessage]);
           setContent('');
         } else {
           console.error('Failed to send message');
