@@ -73,7 +73,7 @@
 // export default Calendar;
 
 import React, { useState, useEffect } from 'react';
-import '/Users/yvonneqtram/Cerebella/client/public/calendar.css';
+import '../public/calendar.css';
 
 const Calendar = () => {
   const [selectedDay, setSelectedDay] = useState(null);
@@ -128,6 +128,7 @@ const Calendar = () => {
 
   return (
     <div className="calendar">
+      <h1 className="calTitle">Study Calendar</h1>
       {renderCard()}
       <div className="days">
         {[...Array(30).keys()].map((day) => (
