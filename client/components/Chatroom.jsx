@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '/Users/Mai/Desktop/React copy/Cerebella/client/public/chatroom.css';
+import "../public/chatroom.css"
 
 const Chatroom = () => {
   const [messages, setMessages] = useState([]);
@@ -51,33 +51,37 @@ const Chatroom = () => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-form">
-        <form onSubmit={sendMessage}>
-          <input
-            type="text"
-            placeholder="Your Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Type a message"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
-          <button type="submit">Send</button>
-        </form>
-      </div>
-      <div className="chat-display">
-        {messages.map((msg, index) => (
-          <div key={index} className="message">
-            <strong>{msg.name}: </strong>
-            {msg.content}
-          </div>
-        ))}
-      </div>
-    </div>
+    <section>
+        <h1 className='chatTitle'>Student Chatroom</h1>
+        <div className="chat-container">
+        <div className="chat-form">
+            <form onSubmit={sendMessage}>
+            <input
+                type="text"
+                placeholder="Your Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
+            <textarea
+                type="text"
+                placeholder="Type a message"
+                rows={5}
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+            />
+            <button className="sendMessageBtn" type="submit">Send</button>
+            </form>
+        </div>
+        <div className="chat-display">
+            {messages.map((msg, index) => (
+            <div key={index} className="message">
+                <strong>{msg.name}: </strong>
+                {msg.content}
+            </div>
+            ))}
+        </div>
+        </div>
+    </section>
   );
 };
 
