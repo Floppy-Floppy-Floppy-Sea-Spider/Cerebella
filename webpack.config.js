@@ -30,6 +30,17 @@ module.exports = {
             test: /\.mp3$/,
             use: 'file-loader',
           },
+          {
+            test: /\.(png|jpg|jpeg|gif|svg)$/,
+            use: [
+              {
+                loader: 'file-loader',
+                options: {
+                  name: 'images/[name].[ext]',
+                },
+              },
+            ],
+          },
         ],
       },
       plugins: [
