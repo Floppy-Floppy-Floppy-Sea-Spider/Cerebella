@@ -99,7 +99,7 @@ body {
   margin-bottom: 20px;
 }
 
-.headerMenu {
+/* .headerMenu {
   display: flex;
   justify-content: space-between;
 }
@@ -197,9 +197,9 @@ body {
   padding-left: 20px;
   list-style: none;
   font-size: 1.5rem;
-}
+} */
 
-.reviewStudySession {
+/* .reviewStudySession {
   font-family: "Oswald", sans-serif;
   color: #FF6600;
   margin: 20px;
@@ -395,9 +395,9 @@ body {
 
 .messageDiv {
   margin-bottom: 15px;
-}
+} */
 
-@media screen and (max-height: 1000px) {
+/* @media screen and (max-height: 1000px) {
   .chatView {
     margin-top: -120px;
   }
@@ -806,4 +806,4 @@ body {
     font-size: 1rem;
     text-align: center;
   }
-}
+} */

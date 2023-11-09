@@ -1,0 +1,112 @@
+/* chatroom.css */
+@import url("https://fonts.googleapis.com/css2?family=Fondamento&display=swap");
+
+.chatTitle {
+  font-family: "Fondamento", cursive;
+  color: #ccc;
+  font-size: 40px;
+  margin-left: 5%;
+}
+
+.chat-container {
+  display: flex;
+  width: 80vw;
+  height: 80vh;
+  margin-left: 5%;
+  display: flex;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.chat-form {
+  flex: 1;
+  background: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.chat-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-form input,
+.chat-form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.chat-form textarea {
+  min-height: 100px;
+}
+
+.chat-form input:focus,
+.chat-form textarea:focus {
+  border-color: #219ebc;
+}
+
+.chat-display {
+  flex: 2;
+  padding: 20px;
+  border: 1px hidden #ccc;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fd5959;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.message:hover {
+  transform: scale(1.1);
+}
+
+.message:nth-child(2n) {
+  background-color: #ff9c6d;
+}
+
+.message:nth-child(3n) {
+  background-color: #fcff82;
+}
+
+.message:nth-child(4n) {
+  background-color: #afc5ff;
+}
+
+.sendMessageBtn {
+  font-family: "Roboto";
+  background: #219ebc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.sendMessageBtn:hover {
+  background: #ff6600;
+  animation: buttonClick 0.3s ease;
+}
+
+@keyframes buttonClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.6);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

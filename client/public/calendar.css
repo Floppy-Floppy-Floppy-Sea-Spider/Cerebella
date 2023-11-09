@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Fondamento&display=swap');
+
+html, body {
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    color: #fff;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+.calTitle {
+    margin-top: -15px;
+    font-size: 40px;
+    font-family: 'Fondamento', cursive;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.days {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.day-square {
+    border: 1px solid #ccc;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #219EBC, #FDCB58);
+    color: #fff;
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.day-square:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #FDCB58, #219EBC);
+}
+
+.card {
+    width: 200px;
+    height: 150px;
+    position: absolute;
+    top: calc(100% + 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a2a6c9c;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.close-button {
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: #023047;
+    font-size: 24px;
+}
+
+.close-button:hover {
+    color: #fff;
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+}
