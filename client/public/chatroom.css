@@ -1,8 +1,8 @@
 /* chatroom.css */
-@import url("https://fonts.googleapis.com/css2?family=Fondamento&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fondamento&display=swap');
 
 .chatTitle {
-  font-family: "Fondamento", cursive;
+  font-family: 'Fondamento', cursive;
   color: #ccc;
   font-size: 40px;
   margin-left: 5%;
@@ -57,6 +57,8 @@
 }
 
 .message {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
   padding: 10px;
   background-color: #fd5959;
@@ -65,6 +67,17 @@
   font-weight: bold;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease-in-out;
+}
+
+.message-content {
+  flex: 1;
+}
+
+.message-actions button {
+  margin-left: 10px;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255, 0.3);
+  border: none;
 }
 
 .message:hover {
@@ -84,7 +97,7 @@
 }
 
 .sendMessageBtn {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   background: #219ebc;
   color: white;
   border: none;

@@ -12,6 +12,10 @@ router.get('/chatroom', chatroomController.getMessages);
 
 router.post('/chatroom', chatroomController.createMessage);
 
+router.put('/chatroom/:id', chatroomController.editMessage);
+
+router.delete('/chatroom/:id', chatroomController.deleteMessage);
+
 router.get('/calendar/:id', calendarController.getEvent);
 
 router.post('/calendar', calendarController.createEvent);
