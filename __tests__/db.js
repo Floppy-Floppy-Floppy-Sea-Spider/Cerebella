@@ -45,6 +45,43 @@ describe('Chatroom Controller', () => {
       expect(res.status).toHaveBeenCalledWith(500);
       expect(res.json).toHaveBeenCalledWith({ error: 'Error fetching messages' });
     });
+
+    it('should edit messages in db', async () => {
+      const mockUpdatedMessage = { _id: 'mockMessageId', content: 'Updated content' };
+      Chatroom.findByIdAndUpdate.mockResolvedValue(mockUpdatedMessage);
+
+      const req = {
+        params: { id: 'mockMessageId' },
+        body: { content: 'Updated content' },
+      };
+      const res = {
+        status: jest.fn(() => res),
+        json: jest.fn(),
+      };
+
+      await chatroomController.editMessage(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith(mockUpdatedMessage);
+    })
+
+    it('it should delete messages in db', async () => {
+      const mockDeletedMessage = { _id: 'mockMessageId', content: 'Deleted content' };
+      Chatroom.findByIdAndDelete.mockResolvedValue(mockDeletedMessage);
+
+      const req = {
+        params: { id: 'mockMessageId' },
+      };
+      const res = {
+        status: jest.fn(() => res),
+        json: jest.fn(),
+      };
+
+      await chatroomController.deleteMessage(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith(mockDeletedMessage);
+    })
   });
 
   describe('createMessage', () => {
