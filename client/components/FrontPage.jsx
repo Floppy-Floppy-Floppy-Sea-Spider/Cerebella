@@ -23,7 +23,7 @@ const FrontPage = ({ username }) => {
         <h1>What would you like to learn today?</h1>
         <div className="selectionButtons">
           <Link to="/createsession" className="gridItem">
-            <button onClick={handleClick}>CREATE STUDY SESSION</button>
+            <button>CREATE STUDY SESSION</button>
           </Link>
 
           <Link to="/chatroom" className="gridItem">
@@ -33,7 +33,7 @@ const FrontPage = ({ username }) => {
             <button>STUDY CALENDAR</button>
           </Link>
           <Link to="/studytracker" className="gridItem">
-            <button>STUDY TRACKER</button>
+            <button onClick={handleClick}>STUDY TRACKER</button>
           </Link>
         </div>
       </section>

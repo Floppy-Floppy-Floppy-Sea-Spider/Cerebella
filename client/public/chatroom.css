@@ -6,6 +6,7 @@
   color: #ccc;
   font-size: 40px;
   margin-left: 5%;
+  position: fixed;
 }
 
 .chat-container {
