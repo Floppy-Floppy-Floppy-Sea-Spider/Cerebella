@@ -1,146 +1,285 @@
-/* * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import url('https://fonts.googleapis.com/css2?family=Fondamento&display=swap');
 
+/* Common styles for all components */
+html,
 body {
-  background-color: #023047;
-}
-
-.mainLoginPage {
-  margin-top: -50px;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  min-height: 100vh;
+  height: 100vh;
 }
 
-.mainLoginPage img {
-  width: 500px;
-}
+/* Calendar */
+/* body.calendar {
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+} */
 
-.mainLoginPage form {
-  margin-left: 100px;
-  padding-left: 100px;
-  border-left: 1px solid white;
+.calendar {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  font-family: roboto, sans-serif;
-}
-
-.formInput {
-  width: 225px;
-  height: 30px;
-  margin: 10px;
-  text-align: center;
-  font-family: "Roboto";
-}
-
-.orangeBtn{
-  background-color: #023047;
-  border: 2px solid #FF6600;
-  color: #FF6600;
-  font-family: "Roboto", sans-serif;
-  font-size: 1rem;
+  position: relative;
+  padding: 20px;
   border-radius: 10px;
-  font-weight: bold;
-  padding: 7px 17px;
-  margin: 5px;
-}
-
-.orangeBtn:hover {
-  cursor: pointer;
-}
-
-.mainLoginPage p:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.orangeBtn:active {
-  background-color: #219EBC;
-  border: 1px solid #219EBC; 
-  color: white;
-}
-
-.mainLoginPage p {
-  color: white;
-  font-size: 0.75rem;
-  margin: 12px;
-}
-
-.signupPage {
-  margin-top: -50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   text-align: center;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
-.signupPage img {
-  width: 300px;
-  margin-left: -20px;
-}
-
-.signupPage label {
-  font-family: "Oswald", sans-serif;
-  font-size: 1.25rem;
-  color: #FFB703;
-}
-
-.signupPage table {
+.calTitle {
+  font-size: 40px;
+  font-family: 'Fondamento', cursive;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   margin-bottom: 20px;
 }
 
-/* .headerMenu {
-  display: flex;
-  justify-content: space-between;
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  width: 100%;
 }
 
-.headerMenu li {
-  list-style: none;
-  font-size: 1.5rem;
+.day-header {
+  font-weight: bold;
+}
+
+.day-square {
+  border: 1px solid #ccc;
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #219ebc, #fdcb58);
+  color: #fff;
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+.day-square:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #fdcb58, #219ebc);
+}
+
+.card {
+  width: 200px;
+  height: 150px;
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a2a6c9c;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.close-button {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: white;
+  font-size: 24px;
+}
+
+.close-button:hover {
+  color: #fff;
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.selected {
+  background: #fdcb58 !important;
+  color: #fff !important;
+}
+
+/* Chatroom */
+/* body.chatroom {
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+} */
+
+.chatTitle {
+  font-family: 'Fondamento', cursive;
+  color: #ccc;
+  font-size: 40px;
+  margin-left: 5%;
+  position: fixed;
+}
+
+.chat-container {
+  display: flex;
+  width: 80vw;
+  height: 80vh;
+  margin-left: 5%;
+  display: flex;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.chat-form {
+  flex: 1;
+  background: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.chat-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-form input,
+.chat-form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.chat-form textarea {
+  min-height: 100px;
+}
+
+.chat-form input:focus,
+.chat-form textarea:focus {
+  border-color: #219ebc;
+}
+
+.chat-display {
+  flex: 2;
+  padding: 20px;
+  border: 1px hidden #ccc;
+  overflow-y: auto;
+}
+
+.message {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fd5959;
+  border-radius: 5px;
+  color: black;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.message-content {
+  flex: 1;
+}
+
+.message-actions button {
+  margin-left: 10px;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255, 0.3);
+  border: none;
+}
+
+.message:hover {
+  transform: scale(1.05);
+}
+
+.message:nth-child(2n) {
+  background-color: #ff9c6d;
+}
+
+.message:nth-child(3n) {
+  background-color: #fcff82;
+}
+
+.message:nth-child(4n) {
+  background-color: #afc5ff;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #888;
+  right: 0;
+  align-self: flex-end;
+}
+
+.sendMessageBtn {
+  font-family: 'Roboto';
+  background: #219ebc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.sendMessageBtn:hover {
+  background: #ff6600;
+  animation: buttonClick 0.3s ease;
+}
+
+@keyframes buttonClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.6);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Front page */
+/* body.frontpage {
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+} */
+
+.cerebella {
+  color: white;
+  font-size: 100px;
+  font-family: 'Fondamento', cursive;
+  position: fixed;
 }
 
 .mainMenu {
   font-family: "Oswald", sans-serif;
-  color: #FF6600;
+  color: #1a2a6c;
   margin: 20px;
   font-weight: bold;
   height: 100%;
-}
-
-.username {
-  color: #FFB703;
-}
-
-.headerMenu li {
-  list-style: none;
-  font-size: 1.5rem;
-}
-
-.headerMenu a:link {
-  text-decoration: none;
-}
-
-.headerMenu a:hover {
-  text-decoration: underline;
-}
-
-.headerMenu a:visited {
-  text-decoration: none;
-  color: #FF6600;
-}
-
-.headerMenu img {
-  width: 200px;
 }
 
 .mainMenu .selectionMenu {
@@ -174,10 +313,70 @@ body {
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   font-size: 2rem;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.mainMenu button:before {
+  content: '';
+  background: linear-gradient(90deg, #219EBC, #56d1f0, #9ae2f3, #d5f0f7, #ebeded, #d5f0f7, #9ae2f3, #56d1f0, #219EBC);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 5px;
+}
+
+.mainMenu button:active {
+  animation: shadowGrow 0.5s linear infinite;
+  animation-direction: alternate-reverse;
+}
+
+.mainMenu button:active:before {
+  background: transparent;
+}
+
+.mainMenu button:hover:before {
+  opacity: 1;
+}
+
+.mainMenu button:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+@keyframes shadowGrow {
+  0% { box-shadow: 0 0 20px rgb(255, 255, 255) }
+  25% { box-shadow: 0 0 30px rgb(255, 255, 255) }
+  50% { box-shadow: 0 0 40px rgb(255, 255, 255) }
+  75% { box-shadow: 0 0 50px rgb(255, 255, 255) }
+  100% { box-shadow: 0 0 60px rgb(255, 255, 255) }
 }
 
 .mainMenu button:hover {
-  cursor: pointer;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
 .footerMenu {
@@ -197,613 +396,130 @@ body {
   padding-left: 20px;
   list-style: none;
   font-size: 1.5rem;
+}
+
+/* study tracker */
+/* body.studytracker {
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
 } */
 
-/* .reviewStudySession {
-  font-family: "Oswald", sans-serif;
-  color: #FF6600;
-  margin: 20px;
-  font-weight: bold;
-  height: 100%;
-}
-
-.reviewPage {
-  margin-top: -125px;
+.app {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  min-height: 100vh;
-  color: white;
-  font-size: 2.5rem;
+  height: 100vh;
 }
 
-.createFlashCards {
-  font-family: "Oswald", sans-serif;
-  color: #FF6600;
-  margin: 20px;
-  font-weight: bold;
-  height: 100%;
-}
-
-.createFlashCardsPage {
-  margin-top: -125px;
+.study-tracker {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  min-height: 100vh;
-  color: white;
-  font-size: 2.5rem;
-}
-
-.reviewFlashCards {
-  font-family: "Oswald", sans-serif;
-  color: #FF6600;
-  margin: 20px;
-  font-weight: bold;
-  height: 100%;
-}
-
-.reviewFlashCardsPage {
-  margin-top: -125px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
-  color: white;
-  font-size: 2.5rem;
-}
-
-.createSession {
-  font-family: "Oswald", sans-serif;
-  color: #FF6600;
-  margin: 20px;
-  font-weight: bold;
-  height: 100%;
-}
-
-.createSessionMain {
-  margin-top: -50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
-  color: white;
-  font-size: 2.5rem;
-}
-
-.createSessionMain form {
-  border: 5px solid #219EBC;
-  width: 1600px;
-}
-
-.createSessionMain h1 {
-  font-size: 2.5rem;
-  text-align: left;
-  margin-bottom: 30px;
-}
-
-.createSessionMain .formItem input {
-  width: 600px;
-}
-
-.createSessionForm {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.createSessionForm label {
-  font-family: "Oswald", sans-serif;
-  font-size: 1.25rem;
-  color: #FFB703;
-  margin: 8px 15px 0 0;
-}
-
-.formLeftSide {
-  margin: 40px;
-  display: flex;
-  flex-direction: column;
-}
-
-.formRightSide {
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-.formRightSide textarea {
+  position: relative;
   padding: 20px;
-  width: 700px;
-  height: 600px;
-}
-
-.formItem {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 10px 0;
-}
-
-#mainPoints {
-  height: 100px;
-}
-
-#painPoints {
-  height: 100px;
-}
-
-.studySession {
-  font-family: "Oswald", sans-serif;
-  color: #FF6600;
-  margin: 20px;
-  font-weight: bold;
-  height: 100%;
-}
-
-.chatView {
-  margin-top: -125px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   text-align: center;
-  min-height: 100vh;
-  color: white;
-  font-size: 2.5rem;
+  min-height: 80vh;
 }
 
-.chatUserInput {
-  display: flex;
-  flex-direction: row;
-}
-
-.chatHeader {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
+.appTitle {
+  font-size: 40px;
+  font-family: 'Fondamento', cursive;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   margin-bottom: 20px;
-  font-size: 1.25rem;
-  width: 1600px;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.chatArea {
-  padding: 20px;
-  height: 400px;
-  width: 1600px;
-  border: 5px solid #219EBC;
-  scroll-behavior: smooth;
-  overflow: scroll;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.25rem;
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 100px;
 }
 
-.chatUserInput textarea {
-  padding: 20px;
-  margin-top: 20px;
-  width: 800px;
-  height: 50px;
+.form label {
+  font-size: 18px;
+  margin-bottom: 8px;
 }
 
-.messageDiv {
-  margin-bottom: 15px;
-} */
-
-/* @media screen and (max-height: 1000px) {
-  .chatView {
-    margin-top: -120px;
-  }
+.form input {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-@media screen and (max-height: 900px) {
-  .chatView {
-    margin-top: -100px;
-  }
+.form button {
+  background-color: #219ebc;
+  color: #fff;
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease-in-out;
 }
 
-@media screen and (max-height: 800px) {
-  .chatView {
-    margin-top: -50px;
-  }
+.form button:hover {
+  background-color: #fdcb58;
 }
 
-@media screen and (max-height: 700px) {
-  .chatView {
-    margin-top: -40px;
-  }
-
-  .chatArea {
-    height: 300px;
-  }
+.column-chart {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
-@media screen and (max-height: 600px) {
-  .chatArea {
-    height: 200px;
-  }
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media screen and (max-height: 500px) {
-  .chatView {
-    margin-top: -20px;
-  }
-
-  .chatArea {
-    height: 200px;
-  }
+.bar {
+  width: 40px;
+  text-align: center;
+  background: #219ebc;
+  color: #fff;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 
-@media screen and (max-width: 1800px) {
-  .mainMenu h1 {
-    font-size: 2.5rem;
-  }
-  
-  .mainMenu button {
-    margin: 20px;
-    width: 350px;
-    height: 350px;
-    font-size: 1.75rem;
-  }
+.first-color {
+  background: #219ebc;
 }
 
-@media screen and (max-width: 1650px) {
-  .chatHeader {
-    width: 1300px;
-  }
-  
-  .chatArea {
-    width: 1300px;
-  }
-  
-  .chatUserInput textarea {
-    padding: 20px;
-    width: 700px;
-    height: 50px;
-  }
-
-  .createSessionMain form {
-    width: 1400px;
-  }
-
-  .createSessionMain .formItem input {
-    width: 500px;
-  }
-
-  .formRightSide textarea {
-    width: 600px;
-    height: 600px;
-  }
+.second-color {
+  background: #fdcb58;
 }
 
-@media screen and (max-width: 1600px) {
-  .mainMenu h1 {
-    font-size: 2.5rem;
-  }
-  
-  .mainMenu button {
-    margin: 20px;
-    width: 325px;
-    height: 325px;
-    font-size: 1.5rem;
-  }
+.third-color {
+  background: #1a2a6c;
 }
 
-@media screen and (max-width: 1500px) {
-  .mainMenu h1 {
-    font-size: 2.5rem;
-  }
-  
-  .mainMenu button {
-    margin: 20px;
-    width: 300px;
-    height: 300px;
-    font-size: 1.5rem;
-  }
+.fourth-color {
+  background: #b21f1f;
 }
 
-@media screen and (max-width: 1450px) {
-  .createSessionMain form {
-    width: 1200px;
-  }
-
-  .createSessionMain .formItem input {
-    width: 400px;
-  }
-
-  .formRightSide textarea {
-    width: 500px;
-    height: 600px;
-  }
+.fifth-color {
+  background: #fdbb2d;
 }
 
-@media screen and (max-width: 1400px) {
-  .mainMenu h1 {
-    font-size: 2.5rem;
-  }
-  
-  .mainMenu button {
-    padding: 30px;
-    margin: 20px;
-    width: 250px;
-    height: 250px;
-    font-size: 1.5rem;
-  }
+.subject-label {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #fff;
 }
-
-@media screen and (max-width: 1350px) {
-  .chatHeader {
-    width: 1150px;
-  }
-  
-  .chatArea {
-    width: 1150px;
-  }
-  
-  .chatUserInput textarea {
-    padding: 20px;
-    width: 700px;
-    height: 50px;
-  }
-}
-
-@media screen and (max-width: 1250px) {
-  .createSessionMain form {
-    width: 1000px;
-  }
-
-  .createSessionMain .formItem input {
-    width: 300px;
-  }
-
-  .formRightSide textarea {
-    width: 400px;
-    height: 600px;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .chatHeader {
-    width: 1000px;
-  }
-  
-  .chatArea {
-    width: 1000px;
-  }
-  
-  .chatUserInput textarea {
-    padding: 20px;
-    width: 700px;
-    height: 50px;
-  }
-
-  .mainMenu h1 {
-    font-size: 2.5rem;
-  }
-  
-  .mainMenu button {
-    padding: 40px;
-    margin: 20px;
-    width: 200px;
-    height: 200px;
-    font-size: 1.5rem;
-  }
-}
-
-@media screen and (max-width: 1050px) {
-  .chatHeader {
-    width: 700px;
-  }
-  
-  .chatArea {
-    width: 700px;
-  }
-  
-  .chatUserInput textarea {
-    padding: 20px;
-    width: 600px;
-    height: 50px;
-  }
-
-  .createSessionMain form {
-    width: 900px;
-  }
-
-  .createSessionMain .formItem input {
-    width: 300px;
-  }
-
-  .formLeftSide input {
-    width: 400px;
-  }
-
-  .formRightSide textarea {
-    width: 350px;
-    height: 600px;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .mainMenu {
-    max-height: 100%;
-  }
-
-  .mainMenu .selectionMenu {
-    margin-top: 0px;
-  }
-  
-  .mainMenu button {
-    padding: 40px;
-    margin: 20px;
-    width: 250px;
-    height: 250px;
-    font-size: 1.5rem;
-  }
-  
-  .selectionButtons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .mainLoginPage img {
-    width: 350px;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .createSessionMain {
-    margin: 100px 0;
-  }
-
-  .createSessionForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .createSessionMain form {
-    width: 700px;
-  }
-
-  .createSessionMain .formItem input {
-    width: 500px;
-  }
-
-  .formLeftSide input {
-    width: 400px;
-  }
-
-  .createSessionMain .formItem {
-    align-items: center;
-  }
-
-  .formRightSide textarea {
-    width: 500px;
-    height: 650px;
-  }
-}
-
-@media screen and (max-height: 900px) {
-  .createSessionMain {
-    margin-top: -50px;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .mainLoginPage img {
-    width: 300px;
-  }
-}
-
-@media screen and (max-width: 750px) {
-  .chatHeader {
-    width: 400px;
-  }
-  
-  .chatArea {
-    width: 400px;
-  }
-  
-  .chatUserInput textarea {
-    padding: 20px;
-    width: 300px;
-    height: 80px;
-  }
-  
-  .mainLoginPage {
-    flex-direction: column;
-  }
-
-  .mainLoginPage img {
-    margin-left: -35px;
-  }
-
-  .mainLoginPage form {
-    margin-left: 0px;
-    padding-left: 0px;
-    border-left: none;
-  }
-
-  .mainLoginPage img {
-    width: 300px;
-  }
-
-  .createSessionMain {
-    margin: 100px 0;
-  }
-
-  .createSessionMain form {
-    width: 500px;
-  }
-
-  .createSessionMain .formItem input {
-    width: 350px;
-  }
-
-  .formLeftSide input {
-    width: 300px;
-  }
-
-  .createSessionMain .formItem {
-    align-items: center;
-  }
-
-  .createSessionMain h1 {
-    font-size: 1.5rem;
-  }
-
-  .formRightSide textarea {
-    width: 350px;
-    height: 650px;
-  }
-}
-
-@media screen and (max-width: 650px) {
-  .mainMenu button {
-    padding: 40px;
-    margin: 20px;
-    width: 200px;
-    height: 200px;
-    font-size: 1.5rem;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .chatHeader {
-    width: 300px;
-  }
-  
-  .chatArea {
-    height: 300px;
-    width: 400px;
-  }
-  
-  .chatUserInput textarea {
-    padding: 20px;
-    width: 200px;
-    height: 100px;
-  }
-
-  .selectionButtons {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .mainMenu h1 {
-    font-size: 1.5rem;
-  }
-
-  .mainMenu button {
-    padding: 0px;
-    margin: 20px;
-    width: 125px;
-    height: 125px;
-    font-size: 1rem;
-    text-align: center;
-  }
-} */

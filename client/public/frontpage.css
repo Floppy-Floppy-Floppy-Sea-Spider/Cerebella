@@ -11,6 +11,7 @@ html, body {
     color: white;
     font-size: 100px;
     font-family: 'Fondamento', cursive;
+    position: fixed;
   }
 
   .mainMenu {

@@ -1,5 +1,6 @@
+//studytracker.jsx
 import React, { useState } from "react";
-import "../public/studytracker.css"
+import "../public/studytracker.css";
 
 const ColumnChart = ({ data }) => {
   const subjects = ["Math", "Science", "Music", "History", "Biology"];
@@ -13,14 +14,16 @@ const ColumnChart = ({ data }) => {
 
   return (
     <div className="column-chart">
-      {data.map((hours, index) => (
-        <div key={index} className="column">
-          <div className={`bar ${colorClasses[index]}`} style={{ height: `${hours * 10}px` }}>
-            {hours}
+      <div className="chart-container">
+        {subjects.map((subject, index) => (
+          <div key={index} className="column">
+            <span className="subject-label">{subject}</span>
+            <div className={`bar ${colorClasses[index]}`} style={{ width: `${data[index] * 10}px` }}>
+              {data[index]}
+            </div>
           </div>
-          <span className="subject-label">{subjects[index]}</span>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
@@ -46,54 +49,24 @@ const StudyTracker = () => {
   };
 
   return (
-    <div className="App">
-      <h1>Brainy Bars</h1>
+    <div className="app">
+      <h1 className="appTitle">Brainy Bars</h1>
       <div className="form">
-        <label>
-          Math:
-          <input
-            type="number"
-            value={hours.Math}
-            onChange={(e) => handleChange("Math", e.target.value)}
-          />
-        </label>
-        <label>
-          Science:
-          <input
-            type="number"
-            value={hours.Science}
-            onChange={(e) => handleChange("Science", e.target.value)}
-          />
-        </label>
-        <label>
-          Music:
-          <input
-            type="number"
-            value={hours.Music}
-            onChange={(e) => handleChange("Music", e.target.value)}
-          />
-        </label>
-        <label>
-          History:
-          <input
-            type="number"
-            value={hours.History}
-            onChange={(e) => handleChange("History", e.target.value)}
-          />
-        </label>
-        <label>
-          Biology:
-          <input
-            type="number"
-            value={hours.Biology}
-            onChange={(e) => handleChange("Biology", e.target.value)}
-          />
-        </label>
+        {Object.entries(hours).map(([subject, value], index) => (
+          <label key={index}>
+            {subject}:
+            <input
+              type="number"
+              value={value}
+              onChange={(e) => handleChange(subject, e.target.value)}
+            />
+          </label>
+        ))}
         <button onClick={handleSubmit}>Submit</button>
       </div>
       <ColumnChart data={chartData} />
     </div>
   );
-}
+};
 
 export default StudyTracker;
