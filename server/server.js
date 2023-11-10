@@ -4,7 +4,7 @@ const router = require('./routes/api');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3000; 
 
 app.use(cors());
 
@@ -37,26 +37,8 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).send(errorObj.message);
 });
 
-// app.use((err, req, res, next) => {
-//   console.error('Error:', err.message);
-//   console.error('Stack:', err.stack);
-//   console.error('Path:', req.path);
-//   console.error('Method:', req.method);
-//   //console.log testing:
-//   if(res.headersSent) {
-//     return next(err);
-//   }
-
-//   res.status(err.statusCode || 500).json({
-//     success: false,
-//     message: 'Internal Server Error',
-//     error: {
-//       message: err.message,
-//       stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
-//     },
-//   });
-// });
-
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });
+
+module.exports = app;
